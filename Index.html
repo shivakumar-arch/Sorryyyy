@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #ffe6e6; /* Soft pink */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        img {
+            width: 220px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            pointer-events: none; /* Prevents dragging the image */
+        }
+
+        h1 {
+            color: #ff4d4d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #ff1a1a;
+            transform: scale(1.05);
+        }
+
+        .buttons-container {
+            position: relative;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #noBtn {
+            position: absolute;
+            background-color: #666; /* Different color for 'No' */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="page active">
+        <img src="https://media.tenor.com/HMngw52R3Z4AAAAi/milk-and-mocha-bear-crying.gif" alt="Sad Milk Mocha">
+        <h1>I'm so sorry, Ammu kutty...</h1>
+        <p>I know I behaved rudely and showed too much ego. I hate that I let my pride get in the way and ended up hurting you.</p>
+        <button class="btn" onclick="nextPage('page2')">Next</button>
+    </div>
+
+    <div id="page2" class="page">
+        <img src="https://media.tenor.com/tYp2qg_jA40AAAAi/dudu-bubu.gif" alt="Bubu Dudu Sorry">
+        <h1>Forgive me, Chellame?</h1>
+        <p>Seeing you disappointed in me is the worst feeling in the world. You didn't deserve that at all, and I regret acting that way.</p>
+        <button class="btn" onclick="nextPage('page3')">Next</button>
+    </div>
+
+    <div id="page3" class="page">
+        <img src="https://media.tenor.com/YhW8aR0I-rYAAAAi/milk-and-mocha.gif" alt="Milk Mocha Hug">
+        <h1>You are my everything, Pondati...</h1>
+        <p>I can't imagine my life without your smile. Please don't be mad at your idiot anymore.</p>
+        <button class="btn" onclick="nextPage('page4')">Next</button>
+    </div>
+
+    <div id="page4" class="page">
+        <img src="https://media.tenor.com/n6tY5w4T96QAAAAi/bubu-dudu.gif" alt="Bubu Dudu Apology">
+        <h1>I Promise...</h1>
+        <p>I promise I don't do such things again, sorry. No more ego, no more acting rude, and no more making my Lovieee sad. I'll be the best for you.</p>
+        <button class="btn" onclick="nextPage('page5')">Next</button>
+    </div>
+
+    <div id="page5" class="page">
+        <img src="https://media.tenor.com/0vKz8_z3WnAAAAAi/bubu-dudu-kiss.gif" alt="Bubu Dudu Love">
+        <h1>do you love me ???</h1>
+        <div class="buttons-container">
+            <button class="btn" onclick="nextPage('page6')">Yes</button>
+            <button class="btn" id="noBtn" onmouseover="dodge()" ontouchstart="dodge(event)">No</button>
+        </div>
+    </div>
+
+    <div id="page6" class="page">
+        <img src="https://media.tenor.com/uGzXo2Z_BHgAAAAi/bubu-dudu.gif" alt="Happy Bubu Dudu">
+        <h1>I knew it! I love you too! ❤️</h1>
+        <p>Now stop being mad and call me right now!</p>
+        <a href="tel:+919353781514" class="btn">Call Me 📞</a>
+    </div>
+
+    <script>
+        function nextPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show the target page
+            document.getElementById(pageId).classList.add('active');
+
+            // Reset 'No' button position if we land on page 5
+            if(pageId === 'page5') {
+                const noBtn = document.getElementById('noBtn');
+                noBtn.style.position = 'absolute';
+                noBtn.style.right = '0px'; 
+                noBtn.style.top = '0px';
+            }
+        }
+
+        function dodge(e) {
+            if (e) e.preventDefault(); // Prevents touch events from actually clicking
+            
+            const btn = document.getElementById("noBtn");
+            const container = document.querySelector('.buttons-container');
+            
+            // Define boundaries for the button to jump around the screen safely
+            const maxX = window.innerWidth - btn.offsetWidth - 20;
+            const maxY = window.innerHeight - btn.offsetHeight - 20;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            btn.style.position = "fixed";
+            btn.style.left = randomX + "px";
+            btn.style.top = randomY + "px";
+        }
+    </script>
+</body>
+</html>
